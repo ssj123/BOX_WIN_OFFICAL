@@ -119,9 +119,9 @@
                     <div class="div_logo">
                         <img src="../assets/imgs/logo_header.png">
                     </div>
-                    <h2>手机验证登录</h2>
+                    <h2>注册</h2>
                     <form>
-                        <div class="form-group" id="">
+                        <div class="form-group" id="username">
                             <label  class="color_40 fontsize_16">手机号</label>
                             <input type="text" v-model="mobile" class="form-control input-lg"  placeholder="请输入手机号">
                         </div>
@@ -129,17 +129,17 @@
                             <label for="exampleInputPassword1" class="color_40 fontsize_16">密码</label>
                             <input type="password" class="form-control input-lg" id="exampleInputPassword1" placeholder="请输入密码">
                         </div>
-                        <!-- <label for="exampleInputAccount1" class="color_40">验证码</label>
+                        <label for="exampleInputAccount1" class="color_40">验证码</label>
                         <div class="input-group div_verify_code" >
                             <div class="col-sm-8 left" >
                                 <input type="text" v-model="verifyCode" class="form-control input-lg input_verify_code" placeholder="请输入验证码">
-                                <img class="input-group-addon" @click="refreshVerifyCode"  :src="verifyCodeUrl" />
+                                <!-- <img class="input-group-addon" @click="refreshVerifyCode"  :src="verifyCodeUrl" /> -->
                             </div>
                             <div class="col-sm-4 right">
                                 <button class="btn btn-lg fontsize_16" type="button" v-bind:disabled="!getMobileCodeActive">获取手机验证码</button>  
                             </div>
-                        </div> -->
-                        <button @click="login" type="button" class="btn btn-primary btn-lg width_100 margin_top_20">登录</button>
+                        </div>
+                        <button @click="regidter" type="button" class="btn btn-primary btn-lg width_100 margin_top_20">注册</button>
                     </form>
                 </div>
             </div>
