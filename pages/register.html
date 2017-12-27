@@ -63,6 +63,15 @@
                 /* border:0 1px 0 0; */
                 box-shadow: 0 0 0 transparent;
             }
+            .register{
+                float: right;
+            }
+            .register a{
+                color: rgba(255,255,255,0.4);
+            }
+            .register a:hover{
+                color: orange;
+            }
         </style>   
     </head>
     <body>
@@ -86,12 +95,11 @@
                             <div class="collapse navbar-collapse navbar-collapse-example">
                             <!-- 一般导航项目 -->
                             <ul class="nav navbar-nav">
-                                <li  ><a href="../index.html">首页</a></li>
-                                <!-- /pages/box_coin.html -->
-                                <li ><a href="#">box宝客</a></li>
+                                <li><a href="../index.html">首页</a></li>
+                                <li><a href="../pages/box_coin.html">box宝客</a></li>
                                 <li><a href="../pages/questions.html">常见问题</a></li>
-                                <li><a href="#">新闻动态</a></li>                                                                
-                                <li><a >社区</a></li>         
+                                <li><a href="#">新闻动态</a></li>                                
+                                <li><a href="../pages/member.html">会员</a></li>       
                                 <!-- <li >
                                     <div class="dropdown dropdown-hover" style="margin-top:12px;">
                                         <button class="btn" type="button" data-toggle="dropdown" style="background:#222;border:0; color:#fff;">
@@ -121,25 +129,30 @@
                     </div>
                     <h2>注册</h2>
                     <form>
-                        <div class="form-group" id="username">
+                        <div class="form-group" id="">
                             <label  class="color_40 fontsize_16">手机号</label>
-                            <input type="text" v-model="mobile" class="form-control input-lg"  placeholder="请输入手机号">
+                            <input type="text" v-model="mobile" class="form-control input-lg phone"  placeholder="请输入手机号">
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1" class="color_40 fontsize_16">密码</label>
-                            <input type="password" class="form-control input-lg" id="exampleInputPassword1" placeholder="请输入密码">
-                        </div>
-                        <label for="exampleInputAccount1" class="color_40">验证码</label>
+                        <label for="exampleInputAccount1" class="color_40 gaincode">验证码</label>
                         <div class="input-group div_verify_code" >
                             <div class="col-sm-8 left" >
                                 <input type="text" v-model="verifyCode" class="form-control input-lg input_verify_code" placeholder="请输入验证码">
                                 <!-- <img class="input-group-addon" @click="refreshVerifyCode"  :src="verifyCodeUrl" /> -->
                             </div>
                             <div class="col-sm-4 right">
-                                <button class="btn btn-lg fontsize_16" type="button" v-bind:disabled="!getMobileCodeActive">获取手机验证码</button>  
+                                <button class="btn btn-lg fontsize_16 codebtn" type="button" >获取手机验证码</button>  
                             </div>
                         </div>
-                        <button @click="regidter" type="button" class="btn btn-primary btn-lg width_100 margin_top_20">注册</button>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="color_40 fontsize_16 password">密码</label>
+                            <input type="password" class="form-control input-lg" id="exampleInputPassword1" placeholder="请输入密码">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword2" class="color_40 fontsize_16 invite_code">邀请码</label>
+                            <input type="text" class="form-control input-lg" id="exampleInputPassword2" placeholder="选填">
+                        </div>
+                        <button type="button" class="form-group btn btn-primary btn-lg width_100 margin_top_20 regidter">注册</button>
+                        <label for="exampleInputPassword3" class="color_40 fontsize_16 register"><a href="login.html">返回登录</a></label>
                     </form>
                 </div>
             </div>
@@ -190,11 +203,97 @@
                 </p>
             </div>
         </div>
+        <script type='text/javascript' src='../lib/jquery.min.js'></script>
         <script src="../common/config.js"></script>
         <script src="../common/box_loaders.js"></script>
         <script src="../lib/vue/vue.min.js"></script>
+        <script type='text/javascript' src='../common/common_my.js'></script>
         
         <script>
+        var tel ;
+        // 验证码
+        $('.codebtn').on('click',function () {
+
+                var phone = $('.phone').val();
+                
+                if ( phone == "" ) {
+                    (new $.zui.ModalTrigger({custom: '请输入手机号！'})).show();
+                    
+                    return ;
+                }
+                tel = phone;
+                new invokeSettime(".codebtn");
+
+                postJSON('/api/v1/obtain_sms_auth_code', {
+                                  "phone": phone,
+                                  "action": "register",
+                                  
+                              }, function(result) {
+                                
+                              }, function(result) {
+                                  
+                                  
+                              });
+            })
+        // 注册
+            $('.regidter').on('click',function () {
+                var phone = $('.phone').val();
+                var password = $('.password').val();
+                var code = $('.input_verify_code') ;
+                var invite_code = $('.invite_code').val() ;
+                if (tel != phone) {
+                    (new $.zui.ModalTrigger({custom: '请输入获取验证码的手机号！'})).show();
+                    return ;
+                }
+                if (password == "") {
+                    (new $.zui.ModalTrigger({custom: '请设置密码！'})).show();
+                    return ;
+                }
+                
+                postJSON('/api/v1/login', {
+                                  "phone": phone,
+                                  "password": password,
+                                  "code": code ,
+                                  "channel": "手环官网" ,
+                              }, function(result) {
+                                localStorage.phone= shoujihao;
+                                localStorage.password= password;
+                                
+                                var thisid = '' + result.thisid ;
+                                var urlid = b.encode(thisid);
+                                
+                                  // window.location.href='../index.html?id='+urlid;
+                              }, function(result) {
+                                  
+                                  if ( result.status == 403 ) {
+                                    alert("手机号或密码错误！")
+                                  return ;
+                                }
+                              });
+            })
+
+            // 倒计时
+            function invokeSettime(obj){
+
+                var countdown=60;
+                settime(obj);
+                function settime(obj) {
+                    if (countdown == 0) {
+                        $(obj).attr("disabled",false);
+                        $(obj).html("获取验证码");
+                        countdown = 60;
+                        return;
+                    } else {
+                        $(obj).attr("disabled",true);
+                        $(obj).html("(" + countdown + ") s 重新发送");
+                        countdown--;
+                    }
+                    setTimeout(function() {
+                                settime(obj) }
+                            ,1000)
+                }
+            }
+
         </script>
     </body>
 </html>

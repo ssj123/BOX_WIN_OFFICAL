@@ -4,7 +4,7 @@
         <title>BOX.WIN官方预售</title>     
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="stylesheet" href="./assets/styles/css_loaders.css"> 
+        <link rel="stylesheet" href="../assets/styles/css_loaders.css"> 
         <style>
             /* .page .navbar-collapse{max-width: 1200px;} */
             .page .carousel-inner{
@@ -38,17 +38,17 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <!-- 品牌名称或logo -->
-                            <a class="navbar-brand" href="#"><img src="assets/imgs/logo_header.png" /></a>
+                            <a class="navbar-brand" href="#"><img src="../assets/imgs/logo_header.png" /></a>
                             </div>
                             <!-- 导航项目 -->
                             <div class="collapse navbar-collapse navbar-collapse-example">
                             <!-- 一般导航项目 -->
                             <ul class="nav navbar-nav">
-                                <li  class="active"><a href="#">首页</a></li>
-                                <li><a href="./pages/box_coin.html">box宝客</a></li>
-                                <li><a href="./pages/questions.html">常见问题</a></li>
+                                <li><a href="../index.html">首页</a></li>
+                                <li><a href="../pages/box_coin.html">box宝客</a></li>
+                                <li><a href="../pages/questions.html">常见问题</a></li>
                                 <li><a href="#">新闻动态</a></li>                                
-                                <li><a href="./pages/member.html">会员</a></li>    
+                                <li class="active"><a href="./member.html">会员</a></li>    
                                 <li >
                                     <div class="dropdown dropdown-hover" style="margin-top:12px;">
                                         <button class="btn" type="button" data-toggle="dropdown" style="background:#222;border:0; color:#fff;">
@@ -57,10 +57,10 @@
                                             <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu no_login">
-                                            <li><a href="./pages/login.html">登录</a></li>
+                                            <li><a href="../pages/login.html">登录</a></li>
                                         </ul>
                                         <ul class="dropdown-menu logined">
-                                            <li><a  href="./pages/user/index.html">个人中心</a></li>
+                                            <li><a  href="../pages/user/index.html">个人中心</a></li>
                                             <li><a id="a_loginout">退出</a></li>                                            
                                         </ul>
                                     </div>                            
@@ -98,24 +98,24 @@
                 }
             </style>
             <div class="body">
-                <div class="div_big_img">
+                <!-- <div class="div_big_img">
                     <img src="assets/imgs/pc.jpg" />
                     <div class="div_box_img">
                         <div class="img-buy-btn col-xs-3">
                             <h3>&nbsp &nbsp盒子开售 &nbsp &nbsp &nbsp</h3>
                             <a class="btn btn-lg btn-warning" href="./pages/buy.html" ><h5 style="margin: 0"> 立 即 前 往</h5></a>
                         </div>
-                        <!-- <div class="img-buy-btn col-xs-3">
+                         <div class="img-buy-btn col-xs-3">
                             <h2>情侣手环开售</h2>
                             <a class="btn btn-lg btn-warning" href="./pages/buyCoupleBracelet.html" ><h5>立即前往</h5></a>
                         </div>
                         <div class="img-buy-btn col-xs-3">
                             <h2>单身手环开售</h2>
                             <a class="btn btn-lg btn-warning" href="./pages/buySingle.html" ><h5>立即前往</h5></a>
-                        </div> -->
+                        </div> 
                     </div>
-                </div>
-                <div class="banner" style="position:relative;">                        
+                </div>-->
+                <!-- <div class="banner" style="position:relative;">                        
                     <div id="myNiceCarousel" class="carousel slide" data-ride="carousel"   >
 
                         <ol class="carousel-indicators">
@@ -155,27 +155,34 @@
                             <span class="icon icon-chevron-right"></span>
                         </a>
                     </div>
-                </div>
+                </div> -->
+
                 <div class="div_big_img"  >
-                    <img src="assets/imgs/pc.jpg" />
+                    <a href="membergold.html"><img src="../assets/imgs/pc.jpg" /></a>
                     <div class="div_box_img">
                         <div class="img-buy-btn col-xs-3">
-                            <h3>情侣手环开售</h3>
-                            <a class="btn btn-lg btn-warning" href="./pages/buyCoupleBracelet.html" ><h5 style="margin: 0"> 立 即 前 往</h5></a>
+                            <h3>黄金会员</h3>
+                            <a class="btn btn-lg btn-warning" href="membergold.html" ><h5 style="margin: 0"> 立 即 前 往</h5></a>
                         </div>
                     </div>
                 </div>
                 <div class="div_big_img" >
-                    <img src="assets/imgs/pc.jpg" />
+                    <a href="memberplatinum.html"><img src="../assets/imgs/pc.jpg" /></a>
                     <div class="div_box_img">
                         <div class="img-buy-btn col-xs-3">
-                            <h3>单身手环开售</h3>
-                            <a class="btn btn-lg btn-warning" href="./pages/buySingle.html" ><h5 style="margin: 0"> 立 即 前 往</h5></a>
+                            <h3>铂金会员</h3>
+                            <a class="btn btn-lg btn-warning" href="memberplatinum.html" ><h5 style="margin: 0"> 立 即 前 往</h5></a>
                         </div>
                     </div>
                 </div>
                 <div class="div_big_img" >
-                    <img src="assets/imgs/pc.jpg" />
+                    <a href="memberdiamond.html"><img src="../assets/imgs/pc.jpg" /></a>
+                    <div class="div_box_img">
+                        <div class="img-buy-btn col-xs-3">
+                            <h3>钻石会员</h3>
+                            <a class="btn btn-lg btn-warning" href="memberdiamond.html" ><h5 style="margin: 0"> 立 即 前 往</h5></a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="footer">
@@ -207,7 +214,7 @@
                 </div>
                 <div class="contact">
                     <div class="oneCloudEWM">
-                        <img class="icon-oneCloudEWM" src="assets/imgs/oneCloudEWM.png">
+                        <img class="icon-oneCloudEWM" src="../assets/imgs/oneCloudEWM.png">
                         <p>扫码下载GCS</p>
                     </div>
                     <h3 class="contact-tel">
@@ -227,11 +234,11 @@
         <script src="./common/config.js"></script>
         <!-- <script src="./common/box_loaders.js"></script> -->
         <script type='text/javascript' src='http://cdn.bootcss.com/zui/1.7.0/lib/jquery/jquery.js'></script>
-        <script type='text/javascript' src='./lib/zui/zui.js'></script>
+        <script type='text/javascript' src='../lib/zui/zui.js'></script>
 
-        <script type='text/javascript' src='./common/common.js'></script>
+        <script type='text/javascript' src='../common/common.js'></script>
 
-        <script type='text/javascript' src='./business/business.js'></script>
+        <script type='text/javascript' src='../business/business.js'></script>
         <script>
         </script>
     </body>

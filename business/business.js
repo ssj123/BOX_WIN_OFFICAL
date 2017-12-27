@@ -61,46 +61,46 @@ var _coreCode={
         window.location.href="/BOX_WIN_OFFICAL/pages/login.html";
     },
 
-    login:{
-        init:function(){
-            new Vue({
-                el:".div_login",
-                data:{
-                    mobile:"",
-                    verifyCode:"",
-                    verifyCode_ok:false,
-                    verifyCodeUrl:""
-                },
-                created:function(){
-                    this.refreshVerifyCode();
-                },
-                computed:{
-                    getMobileCodeActive:function(){
-                        return /\d{11}/.test(this.mobile)&&this.verifyCode_ok;
-                    }
-                },
-                watch:{
-                    verifyCode:function(v){
-                        this.verifyCode_ok=v.length==4;
-                    }
-                },
-                methods:{
-                    refreshVerifyCode:function(){
-                        this.verifyCodeUrl="http://verify.red.xunlei.com/imgcode/refresh.php?v="+new Date().getTime();
-                    },
-                    login:function(){
-                        var userData={
-                            username:"18328472729",
-                            token:"110"
-                        }
-                        sessionStorage.setItem("userData",JSON.stringify(userData));
-                        //window.location.href="user/index.html"
-                        window.history.go(-1);
-                    }
-                }
-            })
-        }
-    },
+    // login:{
+    //     init:function(){
+    //         new Vue({
+    //             el:".div_login",
+    //             data:{
+    //                 mobile:"",
+    //                 verifyCode:"",
+    //                 verifyCode_ok:false,
+    //                 verifyCodeUrl:""
+    //             },
+    //             created:function(){
+    //                 this.refreshVerifyCode();
+    //             },
+    //             computed:{
+    //                 getMobileCodeActive:function(){
+    //                     return /\d{11}/.test(this.mobile)&&this.verifyCode_ok;
+    //                 }
+    //             },
+    //             watch:{
+    //                 verifyCode:function(v){
+    //                     this.verifyCode_ok=v.length==4;
+    //                 }
+    //             },
+    //             methods:{
+    //                 refreshVerifyCode:function(){
+    //                     this.verifyCodeUrl="http://verify.red.xunlei.com/imgcode/refresh.php?v="+new Date().getTime();
+    //                 },
+    //                 login:function(){
+    //                     var userData={
+    //                         username:"18328472729",
+    //                         token:"110"
+    //                     }
+    //                     sessionStorage.setItem("userData",JSON.stringify(userData));
+    //                     //window.location.href="user/index.html"
+    //                     window.history.go(-1);
+    //                 }
+    //             }
+    //         })
+    //     }
+    // },
     init:function(){
         this.checkLogin();
         this.bindHandler();
